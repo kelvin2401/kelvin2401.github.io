@@ -1,101 +1,23 @@
 <html>
-	<head>
-		<title>Validasi Form dengan JQuery Validation</title>
-		<style type="text/css">
-		.labelfrm {
-			display:block;
-			font-size:small;
-			margin-top:5px;
-		} .error { font-size:small; color:red; }
-		</style>
-
-        <script type="text/javascript" src="jquery/jquery.min.js"></script>
-        <script type="text/javascript" src="jquery/jquery.validate.min.js"></script>
-
-        <script type="text/javascript">
-            $(document).ready(function() {
-                $('#frm-mhs').validate({
-                    rules: {
-                        nim : {
-                            digits: true,
-                            minlength:14,
-                            maxlength:14
-                        },
-                        tgl: {
-                            indonesianDate:true
-                        },
-                        umur: {
-                            digits: true,
-                            range: [0, 100]
-                        }, 
-                        email: {
-                            email: true
-                        },
-                        situs: {
-                            url: true
-                        },
-                        pass2: {
-                            equalTo: "#pass1"
-                        }
-                    },
-                    messages: {
-                        nim: {
-                            required: "Kolom nrp harus diisi",
-                            minlength: "Kolom nrp harus terdiri dari 14 digit",
-                            maxlength: "Kolom nrp harus terdiri dari 14 digit"
-                        },
-                        email: {
-                            required: "Alamat email harus diisi",
-                            email: "Format email tidak valid"
-                        },
-                        pass2: {
-                            equalTo: "Password tidak sama"
-                        }
-                    }
-                });
-            });
-            
-            $.validator.addMethod(
-                "indonesianDate",
-                function(value, element) {
-                    return value.match(/^\d\d?\/\d\d?\/\d\d\d\d$/);
-                },
-                "Format tanggal tidak valid"
-            );
-        </script>
-	</head>
-	<body>
-		<h1>Input Data Mahasiswa</h1>
-		<form id="frm-mhs">
-			<label for="nim" class="labelfrm">NRP: </label>
-			<input type="text" name="nim" id="nim" maxlength="14" class="required" size="15"/>
-			
-			<label for="nama" class="labelfrm">Nama Lengkap: </label>
-			<input type="text" name="nama" id="nama" size="30" class="required"/>
-			
-			<label for="alamat" class="labelfrm">Alamat: </label>
-			<textarea name="alamat" id="alamat" cols="40" rows="4" class="required"></textarea>
-			
-			<label for="tgl" class="labelfrm">Tanggal Lahir (DD/MM/YYYY): </label>
-			<input type="text" name="tgl" id="tgl" maxlength="10" size="15" class="required"/>
-			
-			<label for="umur" class="labelfrm">Umur: </label>
-			<input type="text" name="umur" id="umur" maxlength="3" size="7" class="required"/>
-			
-			<label for="email" class="labelfrm">Alamat Email: </label>
-			<input type="text" name="email" id="email" size="50" class="required"/>
-			
-			<label for="situs" class="labelfrm">Alamat Situs: </label>
-			<input type="text" name="situs" id="situs" size="50" class="required"/>
-			
-			<label for="pass1" class="labelfrm">Password: </label>
-			<input type="password" name="pass1" id="pass1" size="15" class="required"/>
-			
-			<label for="pass2" class="labelfrm">Ulangi Password: </label>
-			<input type="password" name="pass2" id="pass2" size="15" class="required"/>
-			
-			<label for="submit" class="labelfrm">&nbsp;</label>
-			<input type="submit" name="Submit" value="Submit"/>
-		</form>
-	</body>
+<head>
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+  <script src="jquery-3.6.min.js"></script>
+  <title>Latihan jQuery</title>
+</head>
+<body>
+  <h1>Latihan jQuery</h1>
+  <label for = "book">Nama Buku :</label>  
+  <input type="text" id = "txtNewBook"/>
+  <select id = "DDLbook">
+    <option value="">Pilih</option>
+  </select>
+  <input type="button" id = "btnAdd" value="Tambah Buku" >
+  <script>
+    $('#btnAdd').click(function(){
+      var newbook = $('#txtNewBook').val();
+      $('#DDLbook').append(new Option(newbook, newbook));
+    })
+  </script>
+</body>
 </html>
